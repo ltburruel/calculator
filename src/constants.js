@@ -7,9 +7,11 @@ const OPERATORS = {
 
 const CLEAR = 'c';
 const EQUALS = '=';
+const NEGATIVE = '!';
 
 module.exports = {
   CLEAR,
   EQUALS,
+  NEGATIVE,
   OPERATORS,
 };

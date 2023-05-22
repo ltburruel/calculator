@@ -19,7 +19,13 @@ function evaluateString(inputStr) {
 
     /** ****  Handle '+/-' button  **** */
     if (char === NEGATIVE) {
-      applyNegative = !applyNegative;
+      if (numStr.length > 0) {
+        // Number is currently being entered, toggle negative
+        numStr = `${parseFloat(numStr) * -1}`;
+      } else {
+        // No number has been entered, apply negative to next number
+        applyNegative = !applyNegative;
+      }
     }
 
     /** ****  Build number  **** */
