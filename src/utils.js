@@ -3,7 +3,7 @@ const constants = require('./constants');
 const operatorValues = Object.values(constants.OPERATORS);
 
 function isNumber(char) {
-  return typeof char === 'string' && char.length === 1 && char >= '0' && char <= '9';
+  return (typeof char === 'string' && char.length === 1 && char >= '0' && char <= '9') || char === '.';
 }
 
 function isOperator(char) {
