@@ -1,5 +1,6 @@
 const { EQUALS, CLEAR } = require('./constants');
 const { isNumber, isOperator } = require('./utils');
+const { evaluateString } = require('./evaluateString');
 
 class Calculator {
   constructor({ onUpdateDisplay }) {
@@ -26,7 +27,7 @@ class Calculator {
   }
 
   _evaluate() {
-    this.result = eval(this.expression); // TODO: Replace with custom implementation
+    this.result = evaluateString(this.expression);
     this.expression = '';
     this.lastNumber = '';
     this._setDisplay(this.result);
@@ -51,7 +52,8 @@ class Calculator {
   }
 
   addInput(input) {
-    for (const c of input) {
+    const cleanedInput = input.replaceAll(' ', '');
+    for (const c of cleanedInput) {
       if (c === EQUALS) {
         this._evaluate();
       } else if (c === CLEAR) {
