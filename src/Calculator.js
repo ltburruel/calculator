@@ -47,7 +47,7 @@ class Calculator {
 
     if (this.expression.length === 0 && (isOperator(c) || c === NEGATIVE)) {
       // If first character is an operator, use the last result as first operand
-      this.expression += `${this.result || 0}${c}`;
+      this.expression += `${this.result || ''}${c}`;
     } else {
       this.expression += c;
     }
