@@ -38,7 +38,7 @@ function evaluateString(inputStr) {
     const isLastCharacter = cleanedInput.length - 1 === i;
     if (isOperator(char) || isLastCharacter) {
       // We've reached an operator or the end of `inputStr`, signaling that `numStr` is complete. Parse it.
-      let num = applyNegative ? parseFloat(numStr) * -1 : parseFloat(numStr);
+      let num = applyNegative ? parseFloat(numStr || '0') * -1 : parseFloat(numStr || '0');
 
       if (char === '%') {
         num /= 100;
