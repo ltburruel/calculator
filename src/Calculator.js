@@ -1,4 +1,4 @@
-const { EQUALS, CLEAR } = require('./constants');
+const { EQUALS, CLEAR, NEGATIVE } = require('./constants');
 const { isNumber, isOperator } = require('./utils');
 const { evaluateString } = require('./evaluateString');
 
@@ -27,7 +27,9 @@ class Calculator {
   }
 
   _evaluate() {
-    this.result = evaluateString(this.expression);
+    if (this.expression.length > 0) {
+      this.result = evaluateString(this.expression);
+    }
     this.expression = '';
     this.lastNumber = '';
     this._setDisplay(this.result);
@@ -43,7 +45,7 @@ class Calculator {
       this.lastNumber += c;
     }
 
-    if (this.expression.length === 0 && isOperator(c)) {
+    if (this.expression.length === 0 && (isOperator(c) || c === NEGATIVE)) {
       // If first character is an operator, use the last result as first operand
       this.expression += `${this.result || 0}${c}`;
     } else {
